@@ -575,7 +575,8 @@ primary:
     ## @param primary.service.annotations Additional custom annotations for MySQL primary service
     ##
     annotations: 
-      hostname: mysql.v4f2.generated.world
+      external-dns.alpha.kubernetes.io/hostname: mysql.v4f2.generated.world
+
     ## @param primary.service.sessionAffinity Session Affinity for Kubernetes service, can be "None" or "ClientIP"
     ## If "ClientIP", consecutive client requests will be directed to the same Pod
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
