@@ -424,7 +424,7 @@ alertmanager:
     tls:
       - secretName: alertmanager-general-tls 
         hosts: 
-          -alertmanager.generated.world
+          - alertmanager.generated.world
     # - secretName: alertmanager-general-tls
     #   hosts:
     #   - alertmanager.example.com
@@ -767,7 +767,7 @@ alertmanager:
           resources:
             requests:
               storage: 10Gi
-        selector: {}
+       # selector: {}
 
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
@@ -1020,9 +1020,9 @@ grafana:
     ## Secret must be manually created in the namespace
     ##
     tls:
-      secretName: grafana-general-tls
-      hosts: 
-        - grafana.generated.world
+      - secretName: grafana-general-tls
+        hosts: 
+          - grafana.generated.world
     # - secretName: grafana-general-tls
     #   hosts:
     #   - grafana.example.com
@@ -3835,7 +3835,7 @@ prometheus:
           resources:
             requests:
               storage: 30Gi
-        selector: {}
+       # selector: {}
 
     ## Using tmpfs volume
     ##
