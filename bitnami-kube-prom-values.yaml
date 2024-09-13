@@ -1188,7 +1188,7 @@ prometheus:
   retention: ""
   ## @param prometheus.retentionSize Maximum size of metrics
   ##
-  retentionSize: "150G"
+  retentionSize: "150GB"
   ## @param prometheus.disableCompaction Disable the compaction of the Prometheus TSDB
   ## See https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ## ref: https://prometheus.io/docs/prometheus/latest/storage/#compaction
