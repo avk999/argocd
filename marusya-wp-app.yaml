@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: wordpress
       repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 23.1.12
+      targetRevision: 23.1.13
       helm:
         valueFiles:
           - $values//marusya-wp-values.yaml
