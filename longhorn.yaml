@@ -21,5 +21,6 @@ spec:
               label-key1: "longhorn-true"
 
   destination:
+    name: in-cluster
     server: https://kubernetes.default.svc
     namespace: longhorn-system
