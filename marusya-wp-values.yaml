@@ -462,7 +462,7 @@ containerSecurityContext:
 ## @param livenessProbe.successThreshold Success threshold for livenessProbe
 ##
 livenessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /wp-admin/install.php
     port: '{{ .Values.wordpressScheme }}'
@@ -1034,7 +1034,7 @@ metrics:
   ## @param metrics.livenessProbe.successThreshold Success threshold for livenessProbe
   ##
   livenessProbe:
-    enabled: true
+    enabled: false
     initialDelaySeconds: 15
     periodSeconds: 10
     timeoutSeconds: 5
