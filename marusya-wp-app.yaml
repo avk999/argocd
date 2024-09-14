@@ -1,23 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  annotations:
   name: marusya-wp
   namespace: argocd
 spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+  destination:
+    namespace: marusya
+    server: https://kubernetes.default.svc
   project: default
   sources:
-    - chart: wordpress
-      repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 23.1.13
-      helm:
-        valueFiles:
-          - $values//marusya-wp-values.yaml
-    - repoURL: https://github.com/avk999/argocd
-      targetRevision: HEAD
-      ref: values
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: marusya
+  - chart: wordpress
+    helm:
+      valueFiles:
+      - $values//marusya-wp-values.yaml
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 23.1.13
+  - ref: values
+    repoURL: https://github.com/avk999/argocd
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
