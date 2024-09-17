@@ -4,6 +4,8 @@ metadata:
   name: longhorn
   namespace: argocd
 spec:
+  ignoreDifferences:
+  - kind: Ingress
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
@@ -22,8 +24,22 @@ spec:
           metrics:
             serviceMonitor:
               enabled: true
+          global:
+            nodeSelector:
+              longhorn: "true"
+          defaultSettings:
+            defaultReplicaCount: "2"
+          persistence:
+            defaultClassReplicaCount: "2"
+          ingress: 
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-issuer
+            ingressClassName: nginx
+            host: longhorn.generated.world 
+            tls: true 
+            tlsSecret: longhorn.local-tls
 
   destination:
-    name: in-cluster
     server: https://kubernetes.default.svc
     namespace: longhorn-system
