@@ -19,6 +19,9 @@ spec:
           global:
             nodeSelector:
               label-key1: "longhorn-true"
+          metrics:
+            serviceMonitor:
+              enabled: true
 
   destination:
     name: in-cluster
