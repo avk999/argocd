@@ -3878,9 +3878,8 @@ prometheus:
         - targets: ["home-assistant.smarthome:8123"]
       relabel_configs:
         - action: replace 
-          targetLabel: namespace
+          target_label: namespace
           replacement: smarthome
-          separator: ;
 
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
