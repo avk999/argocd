@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: extdns-do
+  namespace: argocd
+spec:
+  ignoreDifferences:
+  - kind: Secret
+    name: digitalocean-api
+  syncPolicy:
+  project: default
+  sources:
+    - chart: external-dns
+      repoURL:  https://charts.bitnami.com/bitnami
+      targetRevision: 8.3.9
+      helm:
+        values: |
+          provider: digitalocean
+          digitalocean:
+            secretName: digitalocean-api
+          policy: sync
+          loglevel: debug
+          interval: "2m"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: extdns-system
