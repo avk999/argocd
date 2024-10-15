@@ -5,6 +5,9 @@ metadata:
   name: marusya-wp
   namespace: argocd
 spec:
+  ignoreDifferences:
+    - kind: Secret
+      name: marusya-wp-mariadb
   destination:
     namespace: marusya
     server: https://kubernetes.default.svc
