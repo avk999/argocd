@@ -19,7 +19,7 @@ spec:
           digitalocean:
             secretName: digitalocean-api
           policy: sync
-          loglevel: debug
+          logLevel: debug
           interval: "2m"
 
   destination:
