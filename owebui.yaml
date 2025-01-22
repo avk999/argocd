@@ -47,7 +47,9 @@ spec:
             tls: true
           persistence:
             storageClass: "longhorn"
-
+    - repoURL: git@github.com:avk999/argocd.git
+      targetRevision: master
+      path: owui-extra-ingress 
 
   destination:
     server: https://kubernetes.default.svc
