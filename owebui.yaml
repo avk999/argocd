@@ -20,7 +20,8 @@ spec:
                   - llama3.2-vision
                   - mistral:7b
                   - codegemma:7b
-                  - codegemma:2b
+                  - hf.co/bartowski/Llama-3.2-3B-Instruct-uncensored-GGUF:Q8_0
+                  - deepseek-r1:671b
                 run:
                   - llama3.2-vision
                     #- mistral:7b-instruct-fp16
@@ -36,6 +37,10 @@ spec:
               limits:
                 memory: 30Gi
                 cpu: 5300m
+            tolerations:
+            - key: "dedicatedllm"
+              operator: "Exists"
+              effect: "PreferNoSchedule"
 
           ingress:
             enabled: true 
