@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: syslog-ng
+  namespace: argocd
+spec:
+  syncPolicy:
+  project: default
+  sources:
+    - chart: syslog-ng
+      repoURL:  https://github.com/syslog-ng/syslog-ng/tree/master/contrib/syslog-ng-helm-chart
+      targetRevision: "0.2"
+      helm:
+        values: |
+          storage:
+            storageClass: "longhorn"
+          service:
+            type: LoadBalancer
+
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: logging
