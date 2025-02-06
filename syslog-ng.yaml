@@ -16,6 +16,9 @@ spec:
             storageClass: "longhorn"
           service:
             type: LoadBalancer
+    - repoURL: git@github.com:avk999/argocd.git
+      targetRevision: master
+      path: syslog-ng-kust
 
 
   destination:
