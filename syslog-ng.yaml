@@ -8,8 +8,9 @@ spec:
   project: default
   sources:
     - chart: syslog-ng
-      repoURL:  https://github.com/syslog-ng/syslog-ng/tree/master/contrib/syslog-ng-helm-chart
-      targetRevision: "0.2"
+      repoURL:  https://github.com/syslog-ng/syslog-ng.git
+      path: contrib/syslog-ng-helm-chart
+      targetRevision: HEAD
       helm:
         values: |
           storage:
