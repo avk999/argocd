@@ -1,4 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-patchesStrategicMerge:
-  - add_lb_ip.yaml
+
+patches:
+- target:
+    kind: Service
+  patch: |-
+    - op: add
+      path: /spec/loadBalancerIP
+      value: 192.168.1.109
