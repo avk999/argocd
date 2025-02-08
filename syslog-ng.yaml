@@ -6,20 +6,20 @@ metadata:
 spec:
   syncPolicy:
   project: default
-  sources:
-    - chart: syslog-ng
-      repoURL:  https://avk999.github.io/charts
-      targetRevision: "0.2"
-      helm:
-        values: |
-          storage:
-            storageClass: "longhorn"
-          service:
-            type: LoadBalancer
-    - repoURL: git@github.com:avk999/argocd.git
-      targetRevision: master
-      path: syslog-ng-kust
-
+  source :
+    chart: syslog-ng
+    repoURL:  https://avk999.github.io/charts
+    targetRevision: "0.2.2"
+    helm:
+      values: |
+        storage:
+          storageClass: "longhorn"
+        service:
+          type: LoadBalancer
+          loadBalancerIP: 192.168.1.109
+            #    - repoURL: git@github.com:avk999/argocd.git
+            #      targetRevision: master
+            #      path: syslog-ng-kust
 
   destination:
     server: https://kubernetes.default.svc
