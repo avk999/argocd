@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  configManagementPlugins.yaml: |+
+    - name: kustomized-helm
+      init:
+        command: ["/bin/sh", "-c"]
+        args: ["helm dependency build"]
+      generate:
+        command: ["/bin/sh", "-c"]
+        args: ["helm template . --name-template $ARGOCD_APP_NAME --namespace $ARGOCD_APP_NAMESPACE --kube-version $KUBE_VERSION > all.yaml && kustomize build"]
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: argocd-cm.yaml
+  namespace: argocd
